@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Square Puzzle</title>
+    <link rel="stylesheet" href="puzzle.css">
+</head>
+<body>
+
+<header>
+    <h1>Magic Square Puzzle</h1>
+</header>
+
+<main>
+    <form id="puzzleModeForm">
+        <label for="puzzleSize">Select the size of the magic square:</label>
+        <select id="puzzleSize" name="puzzleSize" required>
+            <option value="">Select Size</option>
+            <!-- Add options for puzzle sizes -->
+            <option value="3">3x3</option>
+            <option value="5">5x5</option>
+            <option value="7">7x7</option>
+            <!-- Add more options as needed -->
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="puzzleGridBox"></div>
+
+    <button id="validateButton">Validate</button>
+    <button id="resetButton">Reset</button>
+</main>
+
+<footer>
+    <p>&copy; 2024 Magic Square Puzzle</p>
+</footer>
+
+<script src="puzzle.js"></script>
+</body>
+</html>

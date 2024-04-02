@@ -1,0 +1,103 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1px 0;
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin: 10px 0;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#magicSquareContainer {
+    margin-top: 20px;
+    margin-bottom: 40px;
+   
+  
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    /*padding*/
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+     /* Add z-index to ensure it's above other content */
+}
+
+/* Additional styling for magic square table */
+.magic-square {
+    border-collapse: collapse;
+}
+
+.magic-square td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+    text-align: justify;
+}
+.h2{
+
+width: 550px;
+padding: 2.5rem;
+background: #D5D8DC ;
+border-radius: 2rem;
+border: rgb(53, 53, 53) 0.1rem solid;
+border-color: rgb(163, 163, 163);
+text-align: justify;
+}
+
+.container{
+    padding-left: 425px;
+}

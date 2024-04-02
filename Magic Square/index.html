@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Square Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Magic Square Generator</h1>
+    </header>  
+    
+    <p class="info">
+        <h2>Hello everyone, Welcome to our Magic Square Generator project.
+            The magic square is a square matrix, whose order is odd and where the sum of the elements for each row or each column or each diagonal is same.</h2></p>
+<div class="container">
+<div class="h2">
+            The sum of each row or each column or each diagonal can be found using this formula. n(n2+ 1)/2 
+<br>
+<br>
+
+Here are the rules to construct a magic square:
+<br>
+<br>
+<ul>
+    <li>We will start from the middle column of the first row, of the matrix, and always go to the top left corner to place next number.</li>
+    <li>If the row exceeds, or the row is not in the matrix, then, change the column as left column and place the number at last row of the matrix, and go for top left corner again.</li>
+    <li>If the column exceeds, or the column is not in the matrix, then change the row as top row and place the number at last column of that matrix, then go to the top left corner again.</li>
+    <li>When the top left corner is not vacant or both row and column exceeds the range, then place the number at the bottom of the last-placed number.</li>
+</ul></div>
+</div>
+    
+
+    <main>
+        <form id="magicSquareForm">
+            <label for="size">Select the size of the magic square:</label>
+            <input type="number" id="size" name="size" min="3" placeholder="Enter size" required>
+
+            <label for="startRow">Select the starting row:</label>
+            <input type="number" id="startRow" name="startRow" placeholder="Enter starting row" required>
+
+            <label for="startCol">Select the starting column:</label>
+            <input type="number" id="startCol" name="startCol" placeholder="Enter starting column" required>
+
+            <button type="submit">Generate Magic Square</button>
+            <button type="button" id="resetButton">Reset</button> <!-- Add reset button -->
+        </form>
+
+        <div id="magicSquareContainer"></div>
+    </main>
+
+    
+
+    <script src="handle.js"></script>
+</body>
+<footer>
+    <p>&copy; 2024 Magic Square Generator</p>
+</footer>
+</html>
