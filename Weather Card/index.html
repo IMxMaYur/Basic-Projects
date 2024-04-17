@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" id="cityInput" placeholder="Enter city name" spellcheck="false">
+            <button id="searchBtn"><img src="images/search.png"></button>
+        </div>
+        <div class="error" style="display: none;">
+            <p>Invalid city name</p>
+        </div>
+        <div class="weather" style="display: none;">
+            <img src="" class="weather-icon" alt="Weather Icon">
+            <h1 class="temp"></h1>
+            <h2 class="city"></h2>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" alt="Humidity Icon">
+                    <div>
+                        <p class="humidity"></p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png" alt="Wind Icon">
+                    <div>
+                        <p class="wind"></p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    const apiKey = "c058a8a205689d7030ac73050a11f406";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+    const searchInput = document.getElementById("cityInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const weatherContainer = document.querySelector(".weather");
+    const errorContainer = document.querySelector(".error");
+
+    const weatherIcon = document.querySelector(".weather-icon");
+
+    async function checkWeather(city) {
+    try {
+        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+        if (!response.ok) {
+            throw new Error('City not found');
+        }
+
+        const data = await response.json();
+
+        updateWeather(data);
+    } catch (error) {
+        if (error instanceof TypeError) {
+            displayError("Network error. Please check your internet connection.");
+        } else {
+            displayError();
+        }
+    }
+}
+
+    function updateWeather(data) {
+        document.querySelector(".city").textContent = data.name;
+        document.querySelector(".temp").textContent = Math.round(data.main.temp) + "°C";
+        document.querySelector(".humidity").textContent = data.main.humidity + "%";
+        document.querySelector(".wind").textContent = data.wind.speed + " km/hr";
+
+        switch (data.weather[0].main) {
+            case "Clouds":
+                weatherIcon.src = "images/clouds.png";
+                break;
+            case "Clear":
+                weatherIcon.src = "images/clear.png";
+                break;
+            case "Rain":
+                weatherIcon.src = "images/rain.png";
+                break;
+            case "Drizzle":
+                weatherIcon.src = "images/drizzle.png";
+                break;
+            case "Mist":
+                weatherIcon.src = "images/mist.png";
+                break;
+            case "Snow":
+                weatherIcon.src = "images/snow.png";
+                break;
+            default:
+                weatherIcon.src = ""; // Handle other weather conditions
+                break;
+        }
+
+        weatherContainer.style.display = "block";
+        errorContainer.style.display = "none";
+    }
+
+    function displayError(message = "Invalid city name") {
+    const errorMessageContainer = document.querySelector(".error p");
+    errorMessageContainer.textContent = message;
+
+    weatherContainer.style.display = "none";
+    errorContainer.style.display = "block";
+}
+
+
+    searchBtn.addEventListener("click", () => {
+        const city = searchInput.value.trim();
+        if (city) {
+            checkWeather(city);
+        } else {
+            alert("Please enter a city name.");
+        }
+    });
+
+    // Initial weather check
+    checkWeather("New York"); // Default city
+
+</script>
+</body>
+</html>
